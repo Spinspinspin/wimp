@@ -20,11 +20,60 @@ public class Movie {
 	private String title;
 
 	@Column (nullable = true)
-	private Date releaseDate;
+	private int releaseDate;
 	
 	@Column (nullable = true)
-	private Long budget;
+	private int budget;
 	
 	@Column(nullable = false, length=500)
 	private String distributor;
+	
+	public Movie() {}
+	
+	public Movie(String title, int releaseDate, int budget, String distributor) {
+		this.title = title;
+		this.releaseDate = releaseDate;
+		this.budget = budget;
+		this.distributor = distributor;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(int releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	public int getBudget() {
+		return budget;
+	}
+
+	public void setBudget(int budget) {
+		this.budget = budget;
+	}
+
+	public String getDistributor() {
+		return distributor;
+	}
+
+	public void setDistributor(String distributor) {
+		this.distributor = distributor;
+	}
 }

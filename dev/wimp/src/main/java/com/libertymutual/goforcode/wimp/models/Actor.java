@@ -23,8 +23,57 @@ public class Actor {
 	private String lastName;
 	
 	@Column (nullable = true)
-	private Long activeSinceYear;
+	private int activeSinceYear;
 	
 	@Column (nullable = true)
 	private Date birthDate;
+	
+	public Actor() {}
+	
+	public Actor(String firstName, String lastName, int activeSinceYear, Date birthDate) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.activeSinceYear = activeSinceYear;
+		this.birthDate = birthDate;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public int getActiveSinceYear() {
+		return activeSinceYear;
+	}
+
+	public void setActiveSinceYear(int activeSinceYear) {
+		this.activeSinceYear = activeSinceYear;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
 }

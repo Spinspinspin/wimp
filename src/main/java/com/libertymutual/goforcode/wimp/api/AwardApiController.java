@@ -21,51 +21,51 @@ import com.libertymutual.goforcode.wimp.repositories.AwardRepository;
 
 public class AwardApiController {
 
-	private AwardRepository awardRepo;
-	
-	public AwardApiController(AwardRepository awardRepo) {
-		this.awardRepo = awardRepo;
-		
-		awardRepo.save(new Award("Best Actress", "AMPAS", 2012));
-		awardRepo.save(new Award("Best Supporting Actor", "AMPAS", 1987));
-		awardRepo.save(new Award("Outstanding Lead Actress in a Comedy Series Emmy", "ATAS", 2008));
-		awardRepo.save(new Award("Outstanding Performer in an Animated Program Daytime Emmy", "ATAS", 2012));
-	}
-	
-	@GetMapping("")
-	public List<Award> getAll() {
-		return awardRepo.findAll();
-	}
-	
-	@GetMapping ("{id}")
-	public Award getOne(@PathVariable long id) throws StuffNotFoundException {
-		Award award = awardRepo.findOne(id);
-		if (award == null) {
-			throw new StuffNotFoundException();
-		}
-			return award;
-		}
-		
-	
-	@DeleteMapping("{id}")
-	public Award delete(@PathVariable long id) {
-		try {
-		Award award = awardRepo.findOne(id);
-		awardRepo.delete(id);
-		return award;
-		} catch (EmptyResultDataAccessException erdae) {
-			return null;
-		}
-	}
-	
-	@PostMapping("")
-	public Award create(@RequestBody Award award) {
-		return awardRepo.save(award);
-	}
-	
-	@PutMapping("{id}")
-	public Award update(@RequestBody Award award, @PathVariable long id) {
-		award.setId(id);
-		return awardRepo.save(award);
-	}
+//	private AwardRepository awardRepo;
+//	
+//	public AwardApiController(AwardRepository awardRepo) {
+//		this.awardRepo = awardRepo;
+//		
+//		awardRepo.save(new Award("Best Actress", "AMPAS", 2012));
+//		awardRepo.save(new Award("Best Supporting Actor", "AMPAS", 1987));
+//		awardRepo.save(new Award("Outstanding Lead Actress in a Comedy Series Emmy", "ATAS", 2008));
+//		awardRepo.save(new Award("Outstanding Performer in an Animated Program Daytime Emmy", "ATAS", 2012));
+//	}
+//	
+//	@GetMapping("")
+//	public List<Award> getAll() {
+//		return awardRepo.findAll();
+//	}
+//	
+//	@GetMapping ("{id}")
+//	public Award getOne(@PathVariable long id) throws StuffNotFoundException {
+//		Award award = awardRepo.findOne(id);
+//		if (award == null) {
+//			throw new StuffNotFoundException();
+//		}
+//			return award;
+//		}
+//		
+//	
+//	@DeleteMapping("{id}")
+//	public Award delete(@PathVariable long id) {
+//		try {
+//		Award award = awardRepo.findOne(id);
+//		awardRepo.delete(id);
+//		return award;
+//		} catch (EmptyResultDataAccessException erdae) {
+//			return null;
+//		}
+//	}
+//	
+//	@PostMapping("")
+//	public Award create(@RequestBody Award award) {
+//		return awardRepo.save(award);
+//	}
+//	
+//	@PutMapping("{id}")
+//	public Award update(@RequestBody Award award, @PathVariable long id) {
+//		award.setId(id);
+//		return awardRepo.save(award);
+//	}
 }

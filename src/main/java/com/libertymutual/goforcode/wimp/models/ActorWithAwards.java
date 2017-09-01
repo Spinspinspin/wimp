@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ActorWithAwards extends Actor{
 
-	@JsonProperty
-	public List<Award> noReallyAwards(){
-		return getAwards();
-	}
-	
+//	@JsonProperty
+//	public List<Award> noReallyAwards(){
+//		return getAwards();
+//	}
+//	
 }

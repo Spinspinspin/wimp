@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.libertymutual.goforcode.wimp.models.Award;
-import com.libertymutual.goforcode.wimp.repositories.AwardRepository;
+//import com.libertymutual.goforcode.wimp.repositories.AwardRepository;
 
-@RestController
-@RequestMapping("/api/awards")
+//@RestController
+//@RequestMapping("/api/awards")
 
 
 public class AwardApiController {

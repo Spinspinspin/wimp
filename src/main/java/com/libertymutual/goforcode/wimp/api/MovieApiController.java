@@ -17,8 +17,11 @@ import com.libertymutual.goforcode.wimp.models.Movie;
 import com.libertymutual.goforcode.wimp.repositories.ActorRepository;
 import com.libertymutual.goforcode.wimp.repositories.MovieRepository;
 
+import io.swagger.annotations.Api;
+
 @RestController
 @RequestMapping("/api/movies")
+@Api(description="Use this to get and create movies and add actors to movies.")
 
 public class MovieApiController {
 	
@@ -30,10 +33,10 @@ public class MovieApiController {
 	this.movieRepo = movieRepo;
 	this.actorRepo = actorRepo;
 	
-	movieRepo.save(new Movie("Time Bandits", 1981, 5000000, "Avco Embassy Pictures"));
-	movieRepo.save(new Movie("Passengers", 2016, 110000000,  "Columbia Pictures"));
-	movieRepo.save(new Movie("Whiskey Tango Foxtrot", 2016, 35000000, "Paramount Pictures"));
-	movieRepo.save(new Movie("Harry Potter and the Goblet of Fire", 2005, 150000000, "Warner Bros. Pictures"));
+//	movieRepo.save(new Movie("Time Bandits", 1981, 5000000, "Avco Embassy Pictures"));
+//	movieRepo.save(new Movie("Passengers", 2016, 110000000,  "Columbia Pictures"));
+//	movieRepo.save(new Movie("Whiskey Tango Foxtrot", 2016, 35000000, "Paramount Pictures"));
+//	movieRepo.save(new Movie("Harry Potter and the Goblet of Fire", 2005, 150000000, "Warner Bros. Pictures"));
 }
 	
 	@GetMapping("")
@@ -41,24 +44,6 @@ public class MovieApiController {
 		return movieRepo.findAll();
 	}
 	
-//	@PostMapping("")
-//	public String createMovie(String title, int releaseDate, int budget, String distributer) {
-//		Actor actor = actorRepo.findOne(actor_id);
-//		Movie movie = new Movie(title, releaseDate, budget, distributer);
-//		movie.setActor(actor);
-//		movieRepo.save(movie);
-//		return "redirect:/movies";
-//	}
-	
-	@PostMapping("{movieId}/actors")
-	public Movie associateAnActor(@PathVariable long movieId, @RequestBody Actor actor) {
-		Movie movie = movieRepo.findOne(movieId);
-		actor = actorRepo.findOne(actor.getId());
-		movie.addActor(actor);
-		movieRepo.save(movie);
-		
-		return movie;
-	}
 	
 	@GetMapping ("{id}")
 	public Movie getOne(@PathVariable long id) throws StuffNotFoundException {
@@ -89,6 +74,15 @@ public class MovieApiController {
 	public Movie update(@RequestBody Movie movie, @PathVariable long id) {
 		movie.setId(id);
 		return movieRepo.save(movie);
+	}
+	@PostMapping("{movieId}/actors")
+	public Movie associateAnActor(@PathVariable long movieId, @RequestBody Actor actor) {
+		Movie movie = movieRepo.findOne(movieId);
+		actor = actorRepo.findOne(actor.getId());
+		movie.addActor(actor);
+		movieRepo.save(movie);
+		
+		return movie;
 	}
 
 }

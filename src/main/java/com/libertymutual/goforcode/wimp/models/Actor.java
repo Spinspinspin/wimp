@@ -46,8 +46,7 @@ public class Actor {
 	@ManyToMany(mappedBy="actors")
 	private List<Movie> movies;
 	
-	@OneToMany(mappedBy="actors")
-	private List<Award> awards;
+	
 	
 	public Actor() {}
 	
@@ -107,12 +106,5 @@ public class Actor {
 		movies = new ArrayList<Movie>();
 		this.movies = movies;
 	}
-	public List<Award> getAwards() {
-		return awards;
-	}
 
-	public void setAwards(List<Award> awards) {
-		awards = new ArrayList<Award>();
-		this.awards = awards;
-	}
 }

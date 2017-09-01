@@ -16,10 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.libertymutual.goforcode.wimp.models.Actor;
-import com.libertymutual.goforcode.wimp.models.ActorWithMovies;
-import com.libertymutual.goforcode.wimp.models.Award;
+//import com.libertymutual.goforcode.wimp.models.ActorWithMovies;
 import com.libertymutual.goforcode.wimp.repositories.ActorRepository;
-import com.libertymutual.goforcode.wimp.repositories.AwardRepository;
+
 
 @RestController
 @RequestMapping("/api/actors")
@@ -27,16 +26,16 @@ import com.libertymutual.goforcode.wimp.repositories.AwardRepository;
 public class ActorApiController {
 
 	private ActorRepository actorRepo;
-	private AwardRepository awardRepo;
+	
 	
 	public ActorApiController(ActorRepository actorRepo) {
 		this.actorRepo = actorRepo;
-		this.awardRepo = awardRepo;
 		
-		actorRepo.save(new Actor("Sean", "Connery", 1954, new Date(Date.parse("08/25/1930"))));
-		actorRepo.save(new Actor("David", "Tennant", 1987, new Date(Date.parse("04/18/1971"))));
-		actorRepo.save(new Actor("Jennifer", "Lawrence", 2006, new Date(Date.parse("08/15/1990"))));
-		actorRepo.save(new Actor("Tina", "Fey", 1997, new Date(Date.parse("05/18/1970"))));
+		
+//		actorRepo.save(new Actor("Sean", "Connery", 1954, new Date(Date.parse("08/25/1930"))));
+//		actorRepo.save(new Actor("David", "Tennant", 1987, new Date(Date.parse("04/18/1971"))));
+//		actorRepo.save(new Actor("Jennifer", "Lawrence", 2006, new Date(Date.parse("08/15/1990"))));
+//		actorRepo.save(new Actor("Tina", "Fey", 1997, new Date(Date.parse("05/18/1970"))));
 		
 	}
 
@@ -45,15 +44,7 @@ public class ActorApiController {
 		return actorRepo.findAll();
 	}
 	
-	@PostMapping("{actorId}/awards")
-	public Award associateAnActor(@PathVariable long awardId, @RequestBody Actor actor) {
-		Award award = awardRepo.findOne(awardId);
-		actor = actorRepo.findOne(actor.getId());
-		award.addActor(actor);
-		awardRepo.save(award);
-		
-		return award;
-	}
+	
 	
 	@GetMapping ("{id}")
 	public Actor getOne(@PathVariable long id) throws StuffNotFoundException {
@@ -89,9 +80,20 @@ public class ActorApiController {
 		return actorRepo.save(actor);
 	}
 	
+	
 	@PutMapping("{id}")
 	public Actor update(@RequestBody Actor actor, @PathVariable long id) {
 		actor.setId(id);
 		return actorRepo.save(actor);
 	}
+	
+//	@PostMapping("{actorId}/awards")
+//	public Award associateAnActor(@PathVariable long awardId, @RequestBody Actor actor) {
+//		Award award = awardRepo.findOne(awardId);
+//		actor = actorRepo.findOne(actor.getId());
+//		award.addActor(actor);
+//		awardRepo.save(award);
+//		
+//		return award;
+//	}
 }

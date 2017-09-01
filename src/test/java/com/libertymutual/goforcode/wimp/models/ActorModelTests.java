@@ -32,7 +32,7 @@ public class ActorModelTests {
 		assertThat(actual.getFirstName()).isEqualTo("David");
 		assertThat(actual.getLastName()).isEqualTo("Tennant");
 		assertThat(actual.getActiveSinceYear()).isEqualTo(1987);
-		assertThat(actor.getBirthDate()).isEqualTo(new Date(Date.parse("04/18/1971")));
+		assertThat(actual.getBirthDate()).isEqualTo(new Date(Date.parse("04/18/1971")));
 	}	
 	
 	@Test
